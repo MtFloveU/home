@@ -14,6 +14,12 @@
           <a :href="siteUrl">{{ siteAuthor }}</a>
         </span>
         <!-- 以下信息请不要修改哦 -->
+         <span class="hidden">
+          &amp;&nbsp;Modified&nbsp;by
+          <a :href="'https://github.com/MtFloveU/home'" target="_blank">
+            {{ "永不言弃" }}
+          </a>
+        </span>
         <span class="hidden">
           &amp;&nbsp;Made&nbsp;by
           <a :href="config.github" target="_blank">
@@ -23,7 +29,7 @@
         <!-- 站点备案 -->
         <span>
           &amp;
-          <a v-if="siteIcp" href="https://beian.miit.gov.cn" target="_blank">
+          <a v-if="siteIcp" href="https://icp.gov.moe/?keyword=20260629" target="_blank">
             {{ siteIcp }}
           </a>
         </span>

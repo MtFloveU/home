@@ -1,37 +1,17 @@
 [
   {
-    "icon": "Blog",
-    "name": "博客",
-    "link": "https://blog.imsyy.top/"
-  },
-  {
-    "icon": "Cloud",
-    "name": "网盘",
-    "link": "https://pan.imsyy.top/"
-  },
-  {
-    "icon": "CompactDisc",
-    "name": "音乐",
-    "link": "https://music.imsyy.top/"
-  },
-  {
-    "icon": "Compass",
-    "name": "起始页",
-    "link": "https://nav.imsyy.top/"
-  },
-  {
-    "icon": "Book",
-    "name": "网址集",
-    "link": "https://web.imsyy.top/"
-  },
-  {
-    "icon": "Fire",
-    "name": "今日热榜",
-    "link": "https://hot.imsyy.top/"
+    "icon": "LaptopCode",
+    "name": "Twitter FDAP",
+    "link": "https://github.com/MtFloveU/twitter_fdap"
   },
   {
     "icon": "LaptopCode",
-    "name": "站点监测",
-    "link": "https://status.imsyy.top/"
+    "name": "Autonitor",
+    "link": "https://github.com/MtFloveU/Autonitor"
+  },
+    {
+    "icon": "Book",
+    "name": "反诈页面收集",
+    "link": "https://afcollect.mikachan.dpdns.org/"
   }
 ]
