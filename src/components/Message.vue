@@ -32,8 +32,9 @@
 <script setup>
 import { Icon } from "@vicons/utils";
 import { QuoteLeft, QuoteRight } from "@vicons/fa";
-import { Error } from "@icon-park/vue-next";
 import { mainStore } from "@/store";
+import { computed, reactive, watch } from "vue";
+
 const store = mainStore();
 
 // 主页站点logo
@@ -56,25 +57,15 @@ const descriptionText = reactive({
   text: import.meta.env.VITE_DESC_TEXT,
 });
 
-// 切换右侧功能区
+// 切换右侧功能区/移动端功能区
 const changeBox = () => {
-  if (store.getInnerWidth >= 721) {
-    store.boxOpenState = !store.boxOpenState;
-  } else {
-    ElMessage({
-      message: "当前页面宽度不足以开启盒子",
-      grouping: true,
-      icon: h(Error, {
-        theme: "filled",
-        fill: "#efefef",
-      }),
-    });
-  }
+  // 解除移动端限制，无论是桌面端还是移动端现在均打开 Box 展示时光胶囊
+  store.boxOpenState = !store.boxOpenState;
 };
 
-// 监听状态变化
+// 监听状态变化（兼容桌面端和移动端）
 watch(
-  () => store.boxOpenState,
+  () => store.boxOpenState || store.mobileFuncState,
   (value) => {
     if (value) {
       descriptionText.hello = import.meta.env.VITE_DESC_HELLO_OTHER;
@@ -139,6 +130,7 @@ watch(
     margin-top: 3.5rem;
     max-width: 460px;
     animation: fade 0.5s;
+    cursor: pointer; /* 增加指针样式提示可点击 */
 
     .content {
       display: flex;
@@ -163,31 +155,7 @@ watch(
     }
     @media (max-width: 720px) {
       max-width: 100%;
-      pointer-events: none;
     }
   }
-  // @media (max-width: 390px) {
-  //   .logo {
-  //     flex-direction: column;
-  //     .logo-img {
-  //       display: none;
-  //     }
-  //     .name {
-  //       margin-left: 0;
-  //       height: auto;
-  //       transform: none;
-  //       text-align: center;
-  //       .bg {
-  //         font-size: 3.5rem;
-  //       }
-  //       .sm {
-  //         font-size: 1.4rem;
-  //       }
-  //     }
-  //   }
-  //   .description {
-  //     margin-top: 2.5rem;
-  //   }
-  // }
 }
 </style>

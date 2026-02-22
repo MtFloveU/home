@@ -16,7 +16,12 @@
             剩余&nbsp;{{ item.remaining }}&nbsp;{{ tag === "day" ? "小时" : "天" }}
           </span>
         </div>
-        <el-progress :text-inside="true" :stroke-width="20" :percentage="parseFloat(item.percentage)" />
+        <!-- 移动端自动将高度缩小到 16px，桌面端保持 20px -->
+        <el-progress 
+          :text-inside="true" 
+          :stroke-width="store.innerWidth >= 720 ? 20 : 16" 
+          :percentage="parseFloat(item.percentage)" 
+        />
       </div>
       <!-- 建站日期 -->
       <div v-if="store.siteStartShow" class="capsule-item start">
@@ -53,6 +58,7 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 .time-capsule {
   width: 100%;
+  
   .title {
     display: flex;
     flex-direction: row;
@@ -66,6 +72,7 @@ onBeforeUnmount(() => {
       margin-right: 6px;
     }
   }
+  
   .all-capsule {
     .capsule-item {
       margin-bottom: 1rem;
@@ -90,6 +97,49 @@ onBeforeUnmount(() => {
           justify-content: center;
           opacity: 0.8;
           font-size: 0.85rem;
+        }
+      }
+    }
+  }
+
+  /* 移动端适配 (平板及大屏手机) */
+  @media (max-width: 720px) {
+    .title {
+      margin: 0.2rem 0 1rem;
+      font-size: 1.05rem;
+    }
+    .all-capsule {
+      .capsule-item {
+        margin-bottom: 0.8rem;
+        .item-title {
+          margin: 0.8rem 0rem 0.4rem 0rem;
+          font-size: 0.85rem;
+          .remaining {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+  }
+
+  /* 超小屏幕适配 (小屏手机，防止文字由于拥挤产生不规则换行) */
+  @media (max-width: 420px) {
+    .all-capsule {
+      .capsule-item {
+        .item-title {
+          flex-direction: column;
+          align-items: flex-start;
+          font-size: 0.8rem;
+          
+          .remaining {
+            margin-top: 4px;
+            font-size: 0.7rem;
+          }
+        }
+        &.start {
+          .item-title {
+            align-items: center;
+          }
         }
       }
     }

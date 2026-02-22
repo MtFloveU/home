@@ -1,5 +1,6 @@
 <template>
-  <div :class="store.mobileOpenState ? 'left hidden' : 'left'">
+  <!-- 当在移动端（宽度 < 721）且 Box 盒子被打开时，自动隐藏左侧组件，为盒子腾出空间 -->
+  <div :class="(store.mobileOpenState || (store.boxOpenState && store.getInnerWidth < 721)) ? 'left hidden' : 'left'">
     <Message />
     <SocialLinks />
   </div>

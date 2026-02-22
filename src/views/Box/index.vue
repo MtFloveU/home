@@ -6,7 +6,7 @@
         theme="filled"
         size="28"
         fill="#ffffff60"
-        v-show="closeShow"
+        v-show="closeShow || store.getInnerWidth < 721"
         @click="store.boxOpenState = false"
       />
     </transition>
@@ -16,7 +16,7 @@
         theme="filled"
         size="28"
         fill="#ffffff60"
-        v-show="closeShow"
+        v-show="closeShow || store.getInnerWidth < 721"
         @click="store.setOpenState = true"
       />
     </transition>
@@ -81,6 +81,18 @@ const closeShow = ref(false);
     padding: 30px;
     width: 100%;
     height: 100%;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 720px) {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+    min-height: 80%;
+    .content {
+      padding: 20px 15px;
+    }
   }
 }
 </style>
