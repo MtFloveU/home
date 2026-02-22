@@ -47,7 +47,6 @@ import Box from "@/views/Box/index.vue";
 import MoreSet from "@/views/MoreSet/index.vue";
 import cursorInit from "@/utils/cursor.js";
 import config from "@/../package.json";
-import { startSakura, stopp } from "@/utils/sakura.js";
 
 const store = mainStore();
 
@@ -80,7 +79,6 @@ watch(
 onMounted(() => {
   // 自定义鼠标
   cursorInit();
-  startSakura();
 
   // 屏蔽右键
   document.oncontextmenu = () => {
@@ -117,7 +115,6 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  stopp();
   window.removeEventListener("resize", getWidth);
 });
 </script>
